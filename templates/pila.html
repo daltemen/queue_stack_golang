@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+{{template "_head.html" .Title}}
+<script>
+	
+	$( document ).ready(function() {
+
+	    $( "#boton" ).click(function() {
+	    	var data = $('#input1').val();
+
+		  $.post("/postpila", data,
+		    function(data, status){
+		        //alert("Data: " + data + "\nStatus: " + status);
+
+		        show_pila(data);
+
+		    });
+		});
+
+
+	});
+
+	function show_pila (data){
+		$("article").empty();
+		$( "article" ).prepend( "<h1>La Pila es igual a: </h1>"+
+						"<p>"+data+"</p>"
+					);
+
+	}
+
+	
+
+</script>
+<body>
+{{template "_sidebar.html" .}}
+
+<article>
+   <p>Por favor escriba la palabra: </p>
+   <input type="text" class="form-control" id="input1" placeholder="Palabra Pila" style="width: 30%">
+   <br>
+   <button type="submit" class="btn btn-default" id="boton">Procesar Pila</button>
+
+</article>
+{{template "_foot.html"}}
+</body>
+</html>
