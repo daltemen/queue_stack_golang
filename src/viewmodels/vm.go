@@ -22,3 +22,8 @@ type Pila struct {
     op    *ObjetoPila
     profundidad uint64
 }
+
+type Cola struct {
+    cola []interface{}
+    largo int
+}

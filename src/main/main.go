@@ -49,6 +49,10 @@ func main() {
             context = viewmodels.GetPila()
             case "postpila":
             context = viewmodels.PostModel(w,req)
+            case "pilacola":
+            context = viewmodels.GetPila()
+            case "postpilacola":
+            context = viewmodels.PostModelCola(w,req)
         }
         if template != nil {
             template.Execute(w, context)

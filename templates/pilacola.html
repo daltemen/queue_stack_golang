@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+{{template "_head.html" .Title}}
+<script>
+	
+	$( document ).ready(function() {
+
+	    $( "#boton" ).click(function() {
+	    	var data = $('#input1').val();
+
+		  $.post("/postpilacola", data,
+		    function(data, status){
+		        //alert("Data: " + data + "\nStatus: " + status);
+
+		        show_pila(data);
+
+		    });
+		});
+
+
+	});
+
+	function show_pila (data){
+		$("article").empty();
+
+		if (data == 'true'){
+			$( "article" ).prepend( "<h1>La Palabra es un Palíndromo ? </h1>"+
+						'<div class="alert alert-success">'+
+						  '<strong>Satisfactorio!</strong> La palabra Ingresada es un paĺíndromo'+
+						'</div>'
+					);
+		}else{
+			$( "article" ).prepend( '<h1>La Palabra es un Palíndromo ? </h1>'+
+						'<div class="alert alert-danger">'+
+						  '<strong>Error!</strong> La palabra Ingresada no es un paĺíndromo'+
+						'</div>'
+					);
+
+		}
+
+		
+
+	}
+
+	
+
+</script>
+<body>
+{{template "_sidebar.html" .}}
+
+<article>
+   <p>Por favor escriba la palabra: </p>
+   <input type="text" class="form-control" id="input1" placeholder="Palabra Pila" style="width: 30%">
+   <br>
+   <button type="submit" class="btn btn-default" id="boton">Procesar Pila</button>
+
+</article>
+{{template "_foot.html"}}
+</body>
+</html>
